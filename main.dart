@@ -1,19 +1,21 @@
-import 'package:first_app_after_exams/home.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:first_app_after_exams/home.dart';
+import 'package:first_app_after_exams/counter.dart'; // Import CounterApp
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => CounterApp(), // Provide an instance of CounterApp
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ChangeNotifier(),
-      child: MaterialApp(
-        home: HomePage(),
-      ),
+    return MaterialApp(
+      home: HomePage(),
     );
   }
 }
